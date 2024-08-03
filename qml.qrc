@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>images/mainaction.png</file>
+        <file>images/statusbar.png</file>
+        <file>Spotify_Mini.qml</file>
+        <file>images/album_image_frame.png</file>
+        <file>images/back.png</file>
+        <file>images/forward.png</file>
+        <file>images/spotify_logo.png</file>
+        <file>images/unknown_song.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+    </qresource>
+</RCC>
