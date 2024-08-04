@@ -11,7 +11,7 @@ PythonRunner::PythonRunner(QObject *parent) : QObject(parent) {
 
 void PythonRunner::runSpotifyScript() {
     QString appDir = QCoreApplication::applicationDirPath();
-    QString scriptRelativePath = QStringLiteral("Spotify.py");
+    QString scriptRelativePath = QStringLiteral("../../Spotify.py");
     QString scriptPath = QDir(appDir).filePath(scriptRelativePath);
 
     QFileInfo fileInfo(scriptPath);

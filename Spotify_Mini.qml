@@ -118,7 +118,7 @@ Item {
         color: "transparent" // Hide the text color
         smooth: true
         x: 422
-        y: 123
+        y: 130
         width: 544
         height: 76
 
@@ -133,7 +133,7 @@ Item {
             y:  - 1
             width: 544
             height: 76
-            opacity: 1
+            opacity: 0.5
         }
         Text {
             text: albumName
@@ -145,7 +145,7 @@ Item {
             y:  + 1
             width: 544
             height: 76
-            opacity: 1
+            opacity: 0.5
         }
         Text {
             text: albumName
@@ -157,7 +157,7 @@ Item {
             y:  - 1
             width: 544
             height: 76
-            opacity: 1
+            opacity: 0.5
         }
         Text {
             text: albumName
@@ -169,7 +169,7 @@ Item {
             y:  + 1
             width: 544
             height: 76
-            opacity: 1
+            opacity: 0.5
         }
 
         // Original text
@@ -222,12 +222,13 @@ Item {
         from: 0
         to: 100
         width: 560
-        height: 6
+        height: 5
         background: Rectangle {
             implicitWidth: 200
             implicitHeight: 6
             color: "#7f7f7f"
             radius: 3
+            opacity: 0.5
         }
         contentItem: Item {
             implicitWidth: 200
@@ -240,32 +241,33 @@ Item {
                 color: "#ffffff"
             }
         }
+        Text {
+            id: current_time
+            text: "00:00"
+            font.pixelSize: 16
+            font.family: "Arial"
+            font.bold: true
+            color: "#ffffff"
+            smooth: true
+            x: 0
+            y: 15
+            opacity: 1
+        }
+        Text {
+            id: finish_time
+            text: "00:00"
+            font.pixelSize: 16
+            font.family: "Arial"
+            font.bold: true
+            color: "#ffffff"
+            smooth: true
+            x: 520
+            y: 15
+            opacity: 1
+        }
     }
 
-    Text {
-        id: current_time
-        text: "00:00"
-        font.pixelSize: 16
-        font.family: "Arial"
-        font.bold: true
-        color: "#ffffff"
-        smooth: true
-        x: 420
-        y: 337.833332538605
-        opacity: 1
-    }
-    Text {
-        id: finish_time
-        text: "00:00"
-        font.pixelSize: 16
-        font.family: "Arial"
-        font.bold: true
-        color: "#ffffff"
-        smooth: true
-        x: 930
-        y: 338
-        opacity: 1
-    }
+
 
     Image {
         id: play
@@ -322,67 +324,82 @@ Item {
             }
         }
     }
-
-    Text {
-        id: clock
-        text: "Clock"
-        horizontalAlignment: Text.AlignRight
-        verticalAlignment: Text.AlignVCenter
-        font.pointSize: 15
-        font.styleName: "Bold"
-        font.family: "Arial"
-        color: "#ffffff"
-        x: 907
-        y: 12
-        width: 100
-        height: 22
-        opacity: 1
-    }
-
-
-    Text {
-        id: dateText
-        font.styleName: "Bold"
-        font.family: "Arial"
-        x: 21
-        y: 12
-        opacity: 1
-        color: "#ffffff"
-        text: "Date"
-        font.pointSize: 15
-    }
-
-    Timer {
-        interval: 1000
-        running: true
-        repeat: true
-        onTriggered: {
-            clock.text = formatTimeWithoutAMPM(new Date()) +" "+ Qt.formatTime(new Date(), "AP")
+    Item{
+        id:status_bar
+        x:0
+        y:0
+        Rectangle{
+            width:1024
+            height: 35
+            x:0
+            y:0
+            color:"#000000"
+            opacity: 0.4
         }
-        function formatTimeWithoutAMPM(dateTime) {
-            var hours = dateTime.getHours()
-            var minutes = dateTime.getMinutes()
 
-            // Convert to 12-hour format
-            var ampm = hours >= 12 ? "PM" : "AM"
-            hours = hours % 12
-            hours = hours ? hours : 12  // Handle midnight (12:00 AM)
+        Text {
+            id: clock
+            text: "Clock"
+            horizontalAlignment: Text.AlignRight
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: 12
+            font.styleName: "Bold"
+            font.family: "Arial"
+            color: "#ffffff"
+            x: 915
+            y: 6
+            width: 100
+            height: 22
+            opacity: 1
+        }
 
-            // Add leading zeros
-            hours = ("0" + hours).slice(-2)
-            minutes = ("0" + minutes).slice(-2)
-            return hours + ":" + minutes
+
+        Text {
+            id: dateText
+            font.styleName: "Bold"
+            font.family: "Arial"
+            x: 10
+            y: 6
+            opacity: 1
+            color: "#ffffff"
+            text: "Date"
+            font.pointSize: 12
         }
-    }
-    Timer {
-        id: dateTimer
-        interval: 1000 // 1 second interval
-        running: true
-        repeat: true
-        onTriggered: {
-            dateText.text=Qt.formatDateTime(new Date(), "dd "+"MMMM "+"yyyy")
+
+        Timer {
+            interval: 1000
+            running: true
+            repeat: true
+            onTriggered: {
+                clock.text = formatTimeWithoutAMPM(new Date()) +" "+ Qt.formatTime(new Date(), "AP")
+            }
+            function formatTimeWithoutAMPM(dateTime) {
+                var hours = dateTime.getHours()
+                var minutes = dateTime.getMinutes()
+
+                // Convert to 12-hour format
+                var ampm = hours >= 12 ? "PM" : "AM"
+                hours = hours % 12
+                hours = hours ? hours : 12  // Handle midnight (12:00 AM)
+
+                // Add leading zeros
+                hours = ("0" + hours).slice(-2)
+                minutes = ("0" + minutes).slice(-2)
+                return hours + ":" + minutes
+            }
         }
+        Timer {
+            id: dateTimer
+            interval: 1000 // 1 second interval
+            running: true
+            repeat: true
+            onTriggered: {
+                dateText.text=Qt.formatDateTime(new Date(), "dd "+"MMMM "+"yyyy")
+            }
+        }
+
     }
+
 
     Connections {
         target: spotifyReceiver

@@ -1,0 +1,55 @@
+# ninja log v5
+69	300	7445098115027716	spotifyMini_autogen/timestamp	4868235a34a4548a
+69	300	7445098115027716	spotifyMini_autogen/mocs_compilation.cpp	4868235a34a4548a
+69	300	7445098115027716	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/timestamp	4868235a34a4548a
+1013	4856	7445097838578273	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/mocs_compilation.cpp.obj	5ba531289b7b4536
+54	188	7445104053890092	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+69	300	7445098115027716	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/mocs_compilation.cpp	4868235a34a4548a
+54	188	7445104053890092	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+1032	4897	7445097838638677	CMakeFiles/spotifyMini.dir/udpsender.cpp.obj	b9e2fbaa8f8222ac
+1049	4913	7445097839121312	CMakeFiles/spotifyMini.dir/SpotifyReceiver.cpp.obj	825589341c1ae6dc
+313	2383	7445098135847714	CMakeFiles/spotifyMini.dir/pythonrunner.cpp.obj	5f11224388e13799
+190	625	7445104058278006	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+1023	5337	7445097843575665	CMakeFiles/spotifyMini.dir/main.cpp.obj	275df775a3876f54
+1083	5548	7445097845726034	CMakeFiles/spotifyMini.dir/spotifyclient.cpp.obj	3b2ff6f5683244bf
+626	936	7445104060476307	spotifyMini.exe	5a52657e9fe3a6bf
+59	187	7445104383577553	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+59	187	7445104383577553	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+188	628	7445104388076352	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+629	1002	7445104390875695	spotifyMini.exe	5a52657e9fe3a6bf
+62	184	7445104523427732	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+62	184	7445104523427732	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+185	621	7445104527875661	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+622	928	7445104529980538	spotifyMini.exe	5a52657e9fe3a6bf
+60	180	7445104749027491	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+60	180	7445104749027491	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+182	623	7445104753479222	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+624	1025	7445104756178411	spotifyMini.exe	5a52657e9fe3a6bf
+59	185	7445105144649190	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+59	185	7445105144649190	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+187	630	7445105149152299	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+631	994	7445105151475990	spotifyMini.exe	5a52657e9fe3a6bf
+55	182	7445105386876555	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+55	182	7445105386876555	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+183	620	7445105391278594	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+621	1025	7445105393977203	spotifyMini.exe	5a52657e9fe3a6bf
+127	281	7445105619770615	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+127	281	7445105619770615	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+281	736	7445105624371717	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+737	1110	7445105626984334	spotifyMini.exe	5a52657e9fe3a6bf
+49	159	7445105826246622	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+49	159	7445105826246622	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+160	654	7445105831222033	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+49	390	7445105918776017	spotifyMini.exe	5a52657e9fe3a6bf
+61	189	7445106131379313	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+61	189	7445106131379313	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+190	631	7445106135778631	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+632	1076	7445106138926592	spotifyMini.exe	5a52657e9fe3a6bf
+47	155	7445106942395554	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+47	155	7445106942395554	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+156	601	7445106946932099	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+601	935	7445106949277928	spotifyMini.exe	5a52657e9fe3a6bf
+54	167	7445107848704115	spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+54	167	7445107848704115	D:/GProject/Dashboard/Github Project/Spotify_Mini_Carthing/build/Desktop_Qt_5_15_2_MSVC2019_64bit-Debug/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp	963b4bc8f34f0bf
+168	625	7445107853240129	CMakeFiles/spotifyMini.dir/spotifyMini_autogen/EWIEGA46WW/qrc_qml.cpp.obj	48539945005e7a4d
+56	483	7445107920077793	spotifyMini.exe	5a52657e9fe3a6bf
