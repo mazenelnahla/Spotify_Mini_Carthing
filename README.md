@@ -1,6 +1,10 @@
 # Spotify Mini Carthing
 
+<<<<<<< HEAD
 ![Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/2.png)
+=======
+<!-- Add a screenshot of the project -->
+>>>>>>> 289b02fd1d855a258d2ae960e031a89b93285ab9
 
 A minimal Spotify media control application designed for car instrument clusters, developed using Qt and C++. This project enables you to control Spotify playback, view track information, and manage Spotify authentication directly from your car's interface.
 
@@ -13,8 +17,13 @@ A minimal Spotify media control application designed for car instrument clusters
 - **Support for Arabic Text:** Properly handles and displays Arabic song titles and artist names.
 
 ## Screenshots
+<<<<<<< HEAD
 [Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/2.png) 
 [Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/1.png) 
+=======
+
+<!-- Add some screenshots of your application in action -->
+>>>>>>> 289b02fd1d855a258d2ae960e031a89b93285ab9
 
 ## Installation
 
@@ -29,7 +38,11 @@ A minimal Spotify media control application designed for car instrument clusters
 
 1. **Clone the Repository:**
    ```bash
+<<<<<<< HEAD
    git clone https://github.com/mazenelnahla/spotify-mini-carthing.git
+=======
+   git clone https://github.com/yourusername/spotify-mini-carthing.git
+>>>>>>> 289b02fd1d855a258d2ae960e031a89b93285ab9
    cd spotify-mini-carthing
    ```
 
