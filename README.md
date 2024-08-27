@@ -14,8 +14,9 @@ A minimal Spotify media control application designed for car instrument clusters
 
 ## Screenshots
 
-[Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/2.png) 
-[Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/1.png) 
+![Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/2.png)
+![Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/1.png)
+
 
 
 ## Installation
