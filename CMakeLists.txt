@@ -36,9 +36,7 @@ else()
     else()
         add_executable(spotifyMini
           ${PROJECT_SOURCES}
-          udpsender.h udpsender.cpp
-          CMakeLists.txt main.cpp    SpotifyReceiver.cpp SpotifyReceiver.h udpsender.cpp udpsender.h
-          Spotify.py pythonrunner.cpp pythonrunner.h qml.qrc  SpotifyReceiver.cpp SpotifyReceiver.h udpsender.cpp udpsender.h
+          CMakeLists.txt main.cpp qml.qrc
           spotifyclient.cpp spotifyclient.h
         )
     endif()

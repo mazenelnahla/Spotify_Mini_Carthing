@@ -2,7 +2,8 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Styles 1.4
 import QtGraphicalEffects 1.0
-import UDPsender 1.0
+import com.example.spotifyclient 1.0
+// import UDPsender 1.0
 
 Item {
     id: item1
@@ -14,6 +15,9 @@ Item {
     property string albumImgUrl: ""
     property bool isPlaying // Property to track play/pause state
     property bool isPlaying2 // Property to track play/pause state
+
+
+
     Rectangle {
         id: background
         width: parent.width
@@ -22,6 +26,9 @@ Item {
         opacity: 1
         anchors.fill:parent
     }
+
+
+
     Image {
         id: backgroundRect
         source: albumImgUrl
@@ -30,14 +37,26 @@ Item {
         height: parent.height
         visible: true // Hide the image element
     }
+
+
+
     FastBlur {
         anchors.fill: backgroundRect
         source: backgroundRect
         radius: 100
     }
-    UDPSender {
-        id: udpSender
+
+
+
+    SpotifyClient {
+        id: spotifyClient
     }
+    // UDPSender {
+    //     id: udpSender
+    // }
+
+
+
     Text {
         id: text1
         x: 849
@@ -47,6 +66,9 @@ Item {
         font.pixelSize: 13
         font.family: "Arial"
     }
+
+
+
     Text {
         id: text2
         x: 21
@@ -56,22 +78,33 @@ Item {
         font.pixelSize: 13
         font.family: "Arial"
     }
+
+
+
     Image {
         id: spotify_logo
         source: "images/spotify_logo.png"
+        sourceSize.height: 42
+        sourceSize.width: 138
+        fillMode: Image.PreserveAspectFit
         x: 45
         y: 60
         opacity: 1
     }
+
+
+
     Rectangle {
         id: artistImage
-        radius: 20
+        radius: 15
+        baselineOffset: 1
         visible: true
         color: "#000000"
         x: 38
         y: 125
         width: 353
         height: 353
+        focus: true
 
         // Ensure ShaderEffectSource has correct sourceItem
         ShaderEffectSource {
@@ -92,14 +125,7 @@ Item {
             x: 0
             y: 0
             source: albumImgUrl ? albumImgUrl : "qrc:/images/unknown_song.png"
-            layer.smooth: true
-            layer.mipmap: true
-            activeFocusOnTab: true
             focus: true
-            antialiasing: true
-            mirror: false
-            mipmap: true
-            autoTransform: true
             asynchronous: true
             fillMode: Image.Stretch
             width: 353
@@ -111,84 +137,32 @@ Item {
             }
         }
     }
+
+
+
+
     Text {
+        id: album_name
         text: albumName
         font.pixelSize: 37
         font.bold: true
-        color: "transparent" // Hide the text color
+        color: "white"
         smooth: true
         x: 422
         y: 130
         width: 544
         height: 76
-
-        // Stroke effect by creating multiple slightly offset texts
-        Text {
-            text: albumName
-            font.pixelSize: 37
-            font.bold: true
-            color: "white"
-            smooth: true
-            x: - 1 // Offset to create the stroke effect
-            y:  - 1
-            width: 544
-            height: 76
-            opacity: 0.5
-        }
-        Text {
-            text: albumName
-            font.pixelSize: 37
-            font.bold: true
-            color: "white"
-            smooth: true
-            x:  + 1 // Offset to create the stroke effect
-            y:  + 1
-            width: 544
-            height: 76
-            opacity: 0.5
-        }
-        Text {
-            text: albumName
-            font.pixelSize: 37
-            font.bold: true
-            color: "white"
-            smooth: true
-            x:  + 1
-            y:  - 1
-            width: 544
-            height: 76
-            opacity: 0.5
-        }
-        Text {
-            text: albumName
-            font.pixelSize: 37
-            font.bold: true
-            color: "white"
-            smooth: true
-            x:  - 1
-            y:  + 1
-            width: 544
-            height: 76
-            opacity: 0.5
-        }
-
-        // Original text
-        Text {
-            id: album_name
-            text: albumName
-            font.pixelSize: 37
-            font.bold: true
-            color: "#2E2F30"
-            smooth: true
-            x: 0
-            y: 0
-            width: 544
-            height: 76
-            opacity: 1
-        }
+        opacity: 1
+        style:
+            Text.Outline;
+            styleColor: "#212121"
     }
+
+
+
+
     Text {
-        id: song_name_song_name
+        id: song_name
         text: trackName
         wrapMode: Text.WrapAnywhere
         font.pixelSize: 33
@@ -201,7 +175,14 @@ Item {
         width: 570
         height: 75
         opacity: 1
+        style:
+            Text.Outline;
+            styleColor: "#212121"
+
     }
+
+
+
     Text {
         id: artist_name
         text: artistName
@@ -212,7 +193,14 @@ Item {
         x: 421
         y: 295
         opacity: 1
+        style:
+            Text.Outline;
+            styleColor: "#212121"
+
     }
+
+
+
 
     ProgressBar {
         id:musicProgress
@@ -252,6 +240,10 @@ Item {
             x: 0
             y: 15
             opacity: 1
+            style:
+                Text.Outline;
+                styleColor: "#212121"
+
         }
         Text {
             id: finish_time
@@ -264,66 +256,83 @@ Item {
             x: 520
             y: 15
             opacity: 1
+            style:
+                Text.Outline;
+                styleColor: "#212121"
+
         }
     }
 
 
 
-    Image {
-        id: play
-        source: "images/play.png"
-        x: 651
-        y: 397
-        opacity: isPlaying ? 0 : 1
-    }
-    Image {
-        id: pause
-        source: "images/pause.png"
-        x: 651
-        y: 397
-        opacity: isPlaying ? 1 : 0
-    }
-    MouseArea {
-        id: playPauseArea
-        x: 651
-        y: 397
-        width: play.width
-        height: play.height
-        onClicked: {
-            udpSender.sendPlayback(isPlaying2);  // Send pause command
-            isPlaying2 = !isPlaying2;
+
+
+    Item{
+        id:media_control
+        x:0
+        y:420
+        Image {
+            id: play
+            source: "images/play.png"
+            x: 651
+            y: -10
+            opacity: isPlaying ? 0 : 1
         }
-    }
-
-    Image {
-        id: forward
-        source: "images/forward.png"
-        x: 771
-        y: 407
-        opacity: 1
-
+        Image {
+            id: pause
+            source: "images/pause.png"
+            x: 651
+            y: -10
+            opacity: isPlaying ? 1 : 0
+        }
         MouseArea {
-            anchors.fill: parent
+            id: playPauseArea
+            x: 651
+            y: 0
+            width: play.width
+            height: play.height
             onClicked: {
-                udpSender.sendForward();  // Send pause command
+                if(isPlaying2){
+                    spotifyClient.pause()
+                }else{
+                    spotifyClient.play()
+                }
+                isPlaying2 = !isPlaying2;
+            }
+        }
+
+        Image {
+            id: forward
+            source: "images/forward.png"
+            x: 771
+            y: 0
+            opacity: 1
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    spotifyClient.nextTrack()
+                }
+            }
+        }
+        Image {
+            id: back
+            source: "images/back.png"
+            x: 551
+            y: 0
+            opacity: 1
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    spotifyClient.previousTrack()
+                }
             }
         }
     }
 
-    Image {
-        id: back
-        source: "images/back.png"
-        x: 551
-        y: 407
-        opacity: 1
 
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                udpSender.sendReverse();  // Send pause command
-            }
-        }
-    }
+
+
     Item{
         id:status_bar
         x:0
@@ -352,8 +361,6 @@ Item {
             height: 22
             opacity: 1
         }
-
-
         Text {
             id: dateText
             font.styleName: "Bold"
@@ -364,14 +371,17 @@ Item {
             color: "#ffffff"
             text: "Date"
             font.pointSize: 12
-        }
+            style:
+                Text.Outline;
+                styleColor: "#212121"
 
+        }
         Timer {
             interval: 1000
             running: true
             repeat: true
             onTriggered: {
-                clock.text = formatTimeWithoutAMPM(new Date()) +" "+ Qt.formatTime(new Date(), "AP")
+                clock.text = formatTimeWithoutAMPM(new Date()) +" "+ "<b>"+Qt.formatTime(new Date(), "AP")+"</b>"
             }
             function formatTimeWithoutAMPM(dateTime) {
                 var hours = dateTime.getHours()
@@ -397,13 +407,13 @@ Item {
                 dateText.text=Qt.formatDateTime(new Date(), "dd "+"MMMM "+"yyyy")
             }
         }
-
     }
+
 
 
     Connections {
         target: spotifyReceiver
-        function onSpotifiyReceivedData(Track_Name, Artist_Name, Album_Name, Album_Img_URL,is_Playing,currentTimeformatted,durationformatted,currentTime,duration) {
+        function onSpotifyReceivedData(Track_Name, Artist_Name, Album_Name, Album_Img_URL,  is_Playing, currentTime, duration, currentTimeformatted, durationformatted) {
             trackName = Track_Name
             artistName = Artist_Name
             albumName = Album_Name
@@ -417,6 +427,63 @@ Item {
                 trackName = "No playing song currently"
                 artistName = "Spotify"
             }
+        }
+        function onIsConnectedChanged(status){
+            lower_alert.visible=!status;
+        }
+
+    }
+    Item{
+        id:lower_alert
+        y:540
+        width: 573
+        height: 186
+        visible: false
+        anchors.horizontalCenter: parent.horizontalCenter
+        Image{
+            id:alert_lower_bg
+            y: -33
+            width: 537
+            height: 186
+            visible: true
+            source: "/images/lower_status.png"
+            anchors.horizontalCenter: parent.horizontalCenter
+            sourceSize.height: 186
+            sourceSize.width: 600
+            cache: true
+            enabled: true
+            smooth: true
+            fillMode: Image.Stretch
+        }
+        Image{
+            id:no_wifi_icon
+            x: 57
+            width: 50
+            height: 50
+            visible: true
+            anchors.verticalCenter: parent.verticalCenter
+            source:"/images/no-wifi_white.png"
+            sourceSize.height: 50
+            sourceSize.width: 50
+            anchors.verticalCenterOffset: -75
+            fillMode: Image.PreserveAspectFit
+        }
+        Text{
+            x: 115
+            y: 8
+            width: 398
+            height: 24
+            color: "#aa0000"
+            text: "there is no internet connection, please reconnect."
+            font.letterSpacing: 1
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.WrapAnywhere
+            font.wordSpacing: 0
+            font.capitalization: Font.Capitalize
+            font.styleName: "Black"
+            font.family: "Arial"
         }
     }
 }
