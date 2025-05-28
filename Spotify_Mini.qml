@@ -11,7 +11,7 @@ Item {
     height: 600
     property string trackName: "No playing song currently"
     property string artistName: "Spotify"
-    property string albumName: ""
+    property string albumName: "Nan"
     property string albumImgUrl: ""
     property bool isPlaying // Property to track play/pause state
     property bool isPlaying2 // Property to track play/pause state
@@ -141,45 +141,212 @@ Item {
 
 
 
-    Text {
-        id: album_name
-        text: albumName
-        font.pixelSize: 37
-        font.bold: true
-        color: "white"
-        smooth: true
+    // Text {
+    //     id: album_name
+    //     text: albumName
+    //     font.pixelSize: 37
+    //     font.bold: true
+    //     color: "white"
+    //     smooth: true
+    //     x: 422
+    //     y: 130
+    //     width: 544
+    //     height: 76
+    //     opacity: 1
+    //     style:
+    //         Text.Outline;
+    //         styleColor: "#212121"
+    // }
+
+    Rectangle {
+        id: albumtitleContainer
         x: 422
         y: 130
         width: 544
         height: 76
-        opacity: 1
-        style:
-            Text.Outline;
-            styleColor: "#212121"
+        color: "transparent"
+        clip: true // Ensure the text is clipped within the container
+
+        // Text element for the song title
+        Text {
+            id: album_name
+            text: albumName
+            font.pixelSize: 33
+            horizontalAlignment: Text.AlignLeft // Changed to AlignLeft for scrolling
+            font.family: "Arial-Black"
+            color: "#ffffff"
+            smooth: true
+            verticalAlignment: Text.AlignVCenter
+            height: parent.height
+            opacity: 1
+            style:
+                Text.Raised;
+                styleColor: "#212121"
+            // Initial position
+            x: 0
+
+            // Function to start the scrolling animation
+            function startScrolling() {
+                // Stop any existing animation
+                albumScrollAnimation.stop()
+
+                // Define the total distance to scroll
+                var scrollDistance = contentWidth + parent.width
+
+                // Set animation properties
+                albumScrollAnimation.from = parent.width
+                albumScrollAnimation.to = -contentWidth
+                albumScrollAnimation.duration = (scrollDistance / 50) * 1000 // Adjust speed here (50 pixels per second)
+
+                // Start the animation
+                albumScrollAnimation.start()
+            }
+
+            // Function to stop the scrolling animation
+            function stopScrolling() {
+                albumScrollAnimation.stop()
+                // Center the text if it's short enough
+                x = 0
+            }
+
+            // Monitor changes in contentWidth to decide whether to scroll
+            onContentWidthChanged: {
+                if (contentWidth > parent.width) {
+                    // Align text to the left to prepare for scrolling
+                    horizontalAlignment = Text.AlignLeft
+                    startScrolling()
+                } else {
+                    stopScrolling()
+                }
+            }
+
+            // Animation for scrolling
+            NumberAnimation {
+                id: albumScrollAnimation
+                target: album_name
+                property: "x"
+                loops: Animation.Infinite
+                easing.type: Easing.Linear
+            }
+
+            // Optional: Handle text changes dynamically
+            onTextChanged: {
+                // Reset position and re-evaluate scrolling necessity
+                x = 0
+                if (contentWidth > parent.width) {
+                    startScrolling()
+                } else {
+                    stopScrolling()
+                }
+            }
+        }
     }
 
 
-
-
-    Text {
-        id: song_name
-        text: trackName
-        wrapMode: Text.WrapAnywhere
-        font.pixelSize: 33
-        verticalAlignment: Text.AlignVCenter
-        font.bold: true
-        color: "#ffffff"
-        smooth: true
+    Rectangle {
+        id: songtitleContainer
         x: 423
         y: 214
         width: 570
         height: 75
-        opacity: 1
-        style:
-            Text.Outline;
-            styleColor: "#212121"
+        color: "transparent"
+        clip: true // Ensure the text is clipped within the container
 
+        // Text element for the song title
+        Text {
+            id: songTitle
+            text: trackName
+            font.pixelSize: 33
+            horizontalAlignment: Text.AlignLeft // Changed to AlignLeft for scrolling
+            font.family: "Arial-Black"
+            color: "#ffffff"
+            smooth: true
+            verticalAlignment: Text.AlignVLeft
+            height: parent.height
+            opacity: 1
+            style:
+                Text.Raised;
+                styleColor: "#212121"
+            // Initial position
+            x: 0
+
+            // Function to start the scrolling animation
+            function startScrolling() {
+                // Stop any existing animation
+                songScrollAnimation.stop()
+
+                // Define the total distance to scroll
+                var scrollDistance = contentWidth + parent.width
+
+                // Set animation properties
+                songScrollAnimation.from = parent.width
+                songScrollAnimation.to = -contentWidth
+                songScrollAnimation.duration = (scrollDistance / 50) * 1000 // Adjust speed here (50 pixels per second)
+
+                // Start the animation
+                songScrollAnimation.start()
+            }
+
+            // Function to stop the scrolling animation
+            function stopScrolling() {
+                songScrollAnimation.stop()
+                // Center the text if it's short enough
+                x = 0
+            }
+
+            // Monitor changes in contentWidth to decide whether to scroll
+            onContentWidthChanged: {
+                if (contentWidth > parent.width) {
+                    // Align text to the left to prepare for scrolling
+                    horizontalAlignment = Text.AlignLeft
+                    startScrolling()
+                } else {
+                    stopScrolling()
+                }
+            }
+
+            // Animation for scrolling
+            NumberAnimation {
+                id: songScrollAnimation
+                target: songTitle
+                property: "x"
+                loops: Animation.Infinite
+                easing.type: Easing.Linear
+            }
+
+            // Optional: Handle text changes dynamically
+            onTextChanged: {
+                // Reset position and re-evaluate scrolling necessity
+                x = 0
+                if (contentWidth > parent.width) {
+                    startScrolling()
+                } else {
+                    stopScrolling()
+                }
+            }
+        }
     }
+
+
+    // Text {
+    //     id: song_name
+    //     text: trackName
+    //     wrapMode: Text.WrapAnywhere
+    //     font.pixelSize: 33
+    //     verticalAlignment: Text.AlignVCenter
+    //     font.bold: true
+    //     color: "#ffffff"
+    //     smooth: true
+    //     x: 423
+    //     y: 214
+    //     width: 570
+    //     height: 75
+    //     opacity: 1
+    //     style:
+    //         Text.Outline;
+    //         styleColor: "#212121"
+
+    // }
 
 
 
@@ -194,7 +361,7 @@ Item {
         y: 295
         opacity: 1
         style:
-            Text.Outline;
+            Text.Raised;
             styleColor: "#212121"
 
     }
@@ -427,6 +594,9 @@ Item {
                 trackName = "No playing song currently"
                 artistName = "Spotify"
             }
+            if(trackName===albumName){
+                albumName=""
+            }
         }
         function onIsConnectedChanged(status){
             lower_alert.visible=!status;
@@ -488,8 +658,6 @@ Item {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0}D{i:4;locked:true}
-}
-##^##*/
+
+
+

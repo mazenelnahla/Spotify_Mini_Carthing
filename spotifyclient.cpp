@@ -156,6 +156,7 @@ void SpotifyClient::saveTokens(const QString &accessToken, const QString &refres
 }
 
 QString SpotifyClient::readAccessToken() {
+    // qDebug() <<tokenFilePath;
     QFile file(tokenFilePath);
     if (!file.open(QIODevice::ReadOnly)) {
         qWarning() << "Could not open token file for reading.";
@@ -304,7 +305,6 @@ void SpotifyClient::stopUpdate()
 void SpotifyClient::pause() {
     QString token = readAccessToken();
     if (token.isEmpty()) return;
-
     QNetworkRequest request(QUrl("https://api.spotify.com/v1/me/player/pause"));
     request.setRawHeader("Authorization", QString("Bearer %1").arg(token).toUtf8());
 
