@@ -17,32 +17,33 @@ A minimal Spotify media control application designed for car instrument clusters
 ![Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/2.png)
 ![Spotify Mini Carthing](https://github.com/mazenelnahla/Spotify_Mini_Carthing/blob/main/screenshots/1.png)
 
-
-
 ## Installation
 
 ### Prerequisites
 
 - Qt 5.15 or later
 - C++17 or later
+- cmake
 - Spotify Developer Account for API access
 - Raspberry Pi or any other embedded system (optional for car installation)
 
 ### Building the Project
 
 1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/mazenelnahla/spotify-mini-carthing.git
-   git clone https://github.com/yourusername/spotify-mini-carthing.git
    cd spotify-mini-carthing
    ```
 
 2. **Configure the Project:**
+
    ```bash
-   qmake
+   cmake
    ```
 
 3. **Build the Project:**
+
    ```bash
    make
    ```
