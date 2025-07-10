@@ -18,14 +18,7 @@ Item {
 
 
 
-    Rectangle {
-        id: background
-        width: parent.width
-        height: parent.height
-        color: "#2E2F30"
-        opacity: 1
-        anchors.fill:parent
-    }
+
 
 
 
@@ -46,7 +39,14 @@ Item {
         radius: 100
     }
 
-
+    Rectangle {
+        id: background
+        width: parent.width
+        height: parent.height
+        color: "#882e2f30"
+        opacity: 1
+        anchors.fill:parent
+    }
 
     SpotifyClient {
         id: spotifyClient
@@ -59,10 +59,10 @@ Item {
 
     Text {
         id: text1
-        x: 849
+        x: 840
         y: 577
         color: "#ffffff"
-        text: qsTr("Powered by Mazen Elnahla")
+        text: qsTr("Developed by Mazen Elnahla")
         font.pixelSize: 13
         font.family: "Arial"
     }
@@ -74,7 +74,7 @@ Item {
         x: 21
         y: 577
         color: "#ffffff"
-        text: qsTr("Submodule of Auto Spectra")
+        text: qsTr("© 2025 Auto Spectra Inc.")
         font.pixelSize: 13
         font.family: "Arial"
     }
@@ -88,7 +88,7 @@ Item {
         sourceSize.width: 138
         fillMode: Image.PreserveAspectFit
         x: 45
-        y: 60
+        y: 70
         opacity: 1
     }
 
@@ -101,7 +101,7 @@ Item {
         visible: true
         color: "#000000"
         x: 38
-        y: 125
+        y: 150
         width: 353
         height: 353
         focus: true
@@ -141,29 +141,12 @@ Item {
 
 
 
-    // Text {
-    //     id: album_name
-    //     text: albumName
-    //     font.pixelSize: 37
-    //     font.bold: true
-    //     color: "white"
-    //     smooth: true
-    //     x: 422
-    //     y: 130
-    //     width: 544
-    //     height: 76
-    //     opacity: 1
-    //     style:
-    //         Text.Outline;
-    //         styleColor: "#212121"
-    // }
-
     Rectangle {
         id: albumtitleContainer
-        x: 422
-        y: 130
-        width: 544
-        height: 76
+        x: 423
+        y: 214
+        width: 570
+        height: 75
         color: "transparent"
         clip: true // Ensure the text is clipped within the container
 
@@ -245,10 +228,10 @@ Item {
 
     Rectangle {
         id: songtitleContainer
-        x: 423
-        y: 214
-        width: 570
-        height: 75
+        x: 422
+        y: 170
+        width: 544
+        height: 76
         color: "transparent"
         clip: true // Ensure the text is clipped within the container
 
@@ -261,7 +244,6 @@ Item {
             font.family: "Arial-Black"
             color: "#ffffff"
             smooth: true
-            verticalAlignment: Text.AlignVLeft
             height: parent.height
             opacity: 1
             style:
@@ -326,28 +308,6 @@ Item {
             }
         }
     }
-
-
-    // Text {
-    //     id: song_name
-    //     text: trackName
-    //     wrapMode: Text.WrapAnywhere
-    //     font.pixelSize: 33
-    //     verticalAlignment: Text.AlignVCenter
-    //     font.bold: true
-    //     color: "#ffffff"
-    //     smooth: true
-    //     x: 423
-    //     y: 214
-    //     width: 570
-    //     height: 75
-    //     opacity: 1
-    //     style:
-    //         Text.Outline;
-    //         styleColor: "#212121"
-
-    // }
-
 
 
     Text {
@@ -434,46 +394,103 @@ Item {
 
 
 
-    Item{
-        id:media_control
-        x:0
-        y:420
-        Image {
-            id: play
-            source: "images/play.png"
-            x: 651
-            y: -10
-            opacity: isPlaying ? 0 : 1
-        }
-        Image {
-            id: pause
-            source: "images/pause.png"
-            x: 651
-            y: -10
-            opacity: isPlaying ? 1 : 0
-        }
-        MouseArea {
-            id: playPauseArea
+    Item {
+        id: media_control
+        x: 0
+        y: 420
+
+        // === Play Button ===
+        Item {
+            id: playButton
             x: 651
             y: 0
-            width: play.width
-            height: play.height
-            onClicked: {
-                if(isPlaying2){
-                    spotifyClient.pause()
-                }else{
+            width: 70
+            height: 70
+            visible: !isPlaying
+
+            Image {
+                id: playIcon
+                anchors.fill: parent
+                source: "images/play_button_circled.svg"
+                smooth: true
+                fillMode: Image.PreserveAspectFit
+                antialiasing: true
+                cache: false
+            }
+
+            ColorOverlay {
+                anchors.fill: parent
+                source: playIcon
+                color: "#ffffff"
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
                     spotifyClient.play()
+                    isPlaying2 = true
                 }
-                isPlaying2 = !isPlaying2;
             }
         }
 
-        Image {
-            id: forward
-            source: "images/forward.png"
-            x: 771
+        // === Pause Button ===
+        Item {
+            id: pauseButton
+            x: 651
             y: 0
-            opacity: 1
+            width: 70
+            height: 70
+            visible: isPlaying
+            smooth: true
+
+            Image {
+                id: pauseIcon
+                anchors.fill: parent
+                source: "images/pause_button.svg"
+                fillMode: Image.PreserveAspectFit
+                antialiasing: true
+                cache: false
+            }
+
+            ColorOverlay {
+                anchors.fill: parent
+                source: pauseIcon
+                color: "#ffffff"
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    spotifyClient.pause()
+                    isPlaying2 = false
+                }
+            }
+        }
+
+        // === Forward Button ===
+        Item {
+            id: forwardButton
+            x: 751
+            y: 0
+            width: 70
+            height: 70
+
+            Image {
+                id: forwardIcon
+                anchors.fill: parent
+                source: "images/end.svg"
+                smooth: true
+                fillMode: Image.PreserveAspectFit
+                antialiasing: true
+                cache: false
+            }
+
+            ColorOverlay {
+                anchors.fill: parent
+                source: forwardIcon
+                color: "#99ffffff"
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -481,12 +498,30 @@ Item {
                 }
             }
         }
-        Image {
-            id: back
-            source: "images/back.png"
+
+        // === Back Button ===
+        Item {
+            id: backButton
             x: 551
             y: 0
-            opacity: 1
+            width: 70
+            height: 70
+
+            Image {
+                id: backIcon
+                anchors.fill: parent
+                source: "images/skip_to_start.svg"
+                smooth: true
+                fillMode: Image.PreserveAspectFit
+                antialiasing: true
+                cache: false
+            }
+
+            ColorOverlay {
+                anchors.fill: parent
+                source: backIcon
+                color: "#99ffffff"
+            }
 
             MouseArea {
                 anchors.fill: parent
@@ -595,7 +630,7 @@ Item {
                 artistName = "Spotify"
             }
             if(trackName===albumName){
-                albumName=""
+                albumName="Single Song"
             }
         }
         function onIsConnectedChanged(status){

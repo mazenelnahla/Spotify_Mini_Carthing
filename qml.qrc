@@ -3,13 +3,13 @@
         <file>main.qml</file>
         <file>images/mainaction.png</file>
         <file>Spotify_Mini.qml</file>
-        <file>images/back.png</file>
-        <file>images/forward.png</file>
         <file>images/spotify_logo.png</file>
         <file>images/unknown_song.png</file>
-        <file>images/pause.png</file>
-        <file>images/play.png</file>
         <file>images/lower_status.png</file>
         <file>images/no-wifi_white.png</file>
+        <file>images/end.svg</file>
+        <file>images/pause_button.svg</file>
+        <file>images/play_button_circled.svg</file>
+        <file>images/skip_to_start.svg</file>
     </qresource>
 </RCC>
